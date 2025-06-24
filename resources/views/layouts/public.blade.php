@@ -17,7 +17,7 @@
                     </a>
                     <nav>
                         <a href="{{ route('faskes.index') }}" class="text-gray-600 hover:text-gray-900">Beranda</a>
-                        </nav>
+                    </nav>
                 </div>
             </div>
         </header>

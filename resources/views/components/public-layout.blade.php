@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faskes App</title>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <div class="min-h-screen flex flex-col justify-between">
+        <div>
+            <header class="bg-white shadow-sm sticky top-0 z-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center py-4">
+                        <a href="{{ route('faskes.index') }}" class="text-2xl font-bold text-indigo-600">
+                            FaskesFinder
+                        </a>
+                        <nav>
+                            <a href="{{ route('faskes.index') }}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                                Beranda
+                            </a>
+                                @auth
+                                @else
+                                <a href="{{ route('login') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Log in</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="ml-2 px-3 py-2 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Register</a>
+                                @endif
+                            @endauth
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+
+        <footer class="bg-white py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+                <p>&copy; {{ date('Y') }} FaskesFinder. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
